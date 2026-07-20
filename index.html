@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Story Maker</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">PERSONAL ALBUM STUDIO</p>
+      <h1>My Story Maker</h1>
+      <p>写真とプロフィールから、Instagram投稿用のアルバムを作成します。</p>
+    </div>
+    <button id="generateBtn" class="primary">アルバムを作成</button>
+  </header>
+
+  <main class="layout">
+    <section class="panel controls">
+      <h2>1. プロフィール</h2>
+      <div class="grid two">
+        <label>表示名<input id="name" placeholder="例：Takashi" maxlength="24" /></label>
+        <label>サブタイトル<input id="subtitle" placeholder="例：MY SUMMER STORY" maxlength="36" /></label>
+        <label>大学・学年<input id="school" placeholder="例：○○大学 2年" maxlength="30" /></label>
+        <label>趣味<input id="hobby" placeholder="例：旅行・カフェ・写真" maxlength="40" /></label>
+      </div>
+      <label>ひとこと<textarea id="message" rows="3" placeholder="例：この夏、たくさんの思い出を作りたい！" maxlength="120"></textarea></label>
+      <label>運営・友達からのメッセージ<textarea id="friendMessage" rows="3" placeholder="例：いつも場を明るくしてくれる大切な存在。" maxlength="160"></textarea></label>
+
+      <h2>2. 写真</h2>
+      <label class="dropzone" for="photos">
+        <input id="photos" type="file" accept="image/*" multiple />
+        <strong>写真を選択</strong>
+        <span>最大10枚・縦横どちらでもOK</span>
+      </label>
+      <div id="photoList" class="photo-list"></div>
+
+      <h2>3. デザイン</h2>
+      <div class="template-list">
+        <label class="template active"><input type="radio" name="template" value="cream" checked /><span class="swatch cream"></span><b>Soft Cream</b></label>
+        <label class="template"><input type="radio" name="template" value="navy" /><span class="swatch navy"></span><b>Modern Navy</b></label>
+        <label class="template"><input type="radio" name="template" value="summer" /><span class="swatch summer"></span><b>Fresh Summer</b></label>
+      </div>
+      <div class="grid two">
+        <label>ページ数<select id="pageCount"><option value="5">5枚</option><option value="7" selected>7枚</option><option value="10">10枚</option></select></label>
+        <label>投稿サイズ<select id="ratio"><option value="portrait" selected>Instagram 4:5</option><option value="story">ストーリー 9:16</option></select></label>
+      </div>
+    </section>
+
+    <section class="panel preview-panel">
+      <div class="preview-head">
+        <div><h2>プレビュー</h2><p id="status">情報を入力して「アルバムを作成」を押してください。</p></div>
+        <button id="downloadAllBtn" class="secondary" disabled>画像をまとめて保存</button>
+      </div>
+      <div id="preview" class="preview-grid empty">
+        <div class="empty-state">ここにアルバムが表示されます</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>写真はブラウザ内で処理され、サーバーには送信されません。</footer>
+  <script src="app.js"></script>
+</body>
+</html>
